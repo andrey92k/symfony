@@ -1,0 +1,5 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Category create</h1>
+    {{ form(form, {'action': path('categories_create'), 'method': 'POST'}) }}
+{% endblock %}

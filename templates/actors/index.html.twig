@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Actors</h1>
+    <p>
+        <a href="{{ path('actor_create_form') }}">
+            <button>Create actor</button>
+        </a>
+    </p>
+
+    {% for actor in actors %}
+        <li>{{ actor.fullName }}</li>
+        <li>{{ actor.slug }}</li>
+        <li>{{ actor.description }}</li>
+        <li>{{ actor.birthday|date('d-m-Y') }}</li>
+        <li>{{ actor.birthplace }}</li>
+        <p>Movies:</p>
+        {% for movie in actor.movies %}
+            <li>{{ movie.name }}</li>
+        {% endfor %}
+        <p>Actions</p>
+        <a href="{{ path('actor_show', {'id':actor.id}) }}">Update</a>
+
+            <form action="{{ path('actor_delete', {'id':actor.id}) }}" method="POST">
+                <input type="hidden" name="_method" value="DELETE"/>
+                <input type="submit" value="Delete"/>
+            </form>
+
+    {% endfor %}
+{% endblock %}

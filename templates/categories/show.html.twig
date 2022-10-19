@@ -1,0 +1,5 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Category update {{ id }}</h1>
+    {{ form(form, {'action': path('categories_update', {'id': id}), 'method': 'PUT'}) }}
+{% endblock %}

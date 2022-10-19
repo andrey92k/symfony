@@ -1,0 +1,5 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Movie update {{ id }}</h1>
+    {{ form(form, {'action': path('movie_update', {'id': id}), 'method': 'PUT'}) }}
+{% endblock %}

@@ -1,3 +1,113 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+kernel:
+    resource: ../src/Kernel.php
+    type: attribute
+
+app_logout:
+    path: /logout
+    methods: GET
+user_list:
+    path: /users
+    # the controller value has the format 'controller_class::method_name'
+    controller: App\Controller\Users\AllController
+user_show:
+    path: /users/{id}
+    controller: App\Controller\Users\ShowController
+    methods:    GET
+
+user_delete:
+    path: /users/{id}
+    controller: App\Controller\Users\DeleteController
+    methods:   DELETE|POST
+
+categories_list:
+    path: /categories
+    # the controller value has the format 'controller_class::method_name'
+    controller: App\Controller\Categories\AllController
+
+categories_show:
+    path: /categories/{id}
+    controller: App\Controller\Categories\ShowController
+    methods:    GET
+
+categories_create_form:
+    path: /categories_create
+    controller: App\Controller\Categories\CreateController
+    methods:    GET
+
+categories_create:
+    path: /store_categories
+    controller: App\Controller\Categories\StoreController
+    methods:    POST
+
+categories_update:
+    path: /update_categories/{id}
+    controller: App\Controller\Categories\UpdateController
+    methods:    PUT|POST
+
+categories_delete:
+    path: /categories/{id}
+    controller: App\Controller\Categories\DeleteController
+    methods:    DELETE|POST
+
+movie_list:
+    path: /movies
+    # the controller value has the format 'controller_class::method_name'
+    controller: App\Controller\Movies\AllController
+
+movie_show:
+    path: /movies/{id}
+    controller: App\Controller\Movies\ShowController
+    methods:    GET
+
+movie_create_form:
+    path: /movies_create
+    controller: App\Controller\Movies\CreateController
+    methods:    GET
+
+movie_create:
+    path: /store_movies
+    controller: App\Controller\Movies\StoreController
+    methods:    POST
+
+movie_update:
+    path: /update_movies/{id}
+    controller: App\Controller\Movies\UpdateController
+    methods:    PUT|POST
+
+movie_delete:
+    path: /movies/{id}
+    controller: App\Controller\Movies\DeleteController
+    methods:    DELETE|POST
+
+actor_list:
+    path: /actors
+    # the controller value has the format 'controller_class::method_name'
+    controller: App\Controller\Actors\AllController
+
+actor_show:
+    path: /actors/{id}
+    controller: App\Controller\Actors\ShowController
+    methods:    GET
+
+actor_create_form:
+    path: /actors_create
+    controller: App\Controller\Actors\CreateController
+    methods:    GET
+
+actor_create:
+    path: /store_actors
+    controller: App\Controller\Actors\StoreController
+    methods:    POST
+
+actor_update:
+    path: /update_actors/{id}
+    controller: App\Controller\Actors\UpdateController
+    methods:    PUT|POST
+
+actor_delete:
+    path: /actors/{id}
+    controller: App\Controller\Actors\DeleteController
+    methods:    DELETE|POST

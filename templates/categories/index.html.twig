@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Categories</h1>
+    <p>
+        <a href="{{ path('categories_create_form') }}">
+            <button>Create category</button>
+        </a>
+    </p>
+
+    {% for category in categories %}
+        <li>{{ category.name }}</li>
+        <li>{{ category.slug }}</li>
+        <li>{{ category.description }}</li>
+        <li>{{ category.sort }}</li>
+        <li><a href="{{ path('categories_show', {'id':category.id}) }}">Update</a></li>
+        <li>
+            <form action="{{ path('categories_delete', {'id':category.id}) }}" method="POST">
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="submit" value="Delete" />
+            </form>
+        </li>
+    {% endfor %}
+{% endblock %}

@@ -111,3 +111,12 @@ actor_delete:
     path: /actors/{id}
     controller: App\Controller\Actors\DeleteController
     methods:    DELETE|POST
+
+redis_test:
+    path: /redis-test
+    controller: App\Controller\TestController::test
+
+comment_create:
+    path: /comment-create/{id}
+    controller: App\Controller\CommentController::store
+    methods:    POST

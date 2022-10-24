@@ -2,6 +2,7 @@
 
 namespace App\Controller\Users;
 
+use Redis;
 use App\Repository\UserRepository;
 use App\Resource\UserResource;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +14,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class AllController extends AbstractController
 {
+
+
     /**
      * Get users action
      *

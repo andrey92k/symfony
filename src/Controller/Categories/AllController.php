@@ -3,6 +3,7 @@
 namespace App\Controller\Categories;
 
 use App\Entity\Category;
+use App\Helper\RedisHelper;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

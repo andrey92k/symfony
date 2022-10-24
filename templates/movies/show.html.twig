@@ -2,4 +2,14 @@
 {% block body %}
     <h1>Movie update {{ id }}</h1>
     {{ form(form, {'action': path('movie_update', {'id': id}), 'method': 'PUT'}) }}
+
+    <h2>Add comment:</h2>
+    {{ form(commentForm, {'action': path('comment_create', {'id': id}), 'method': 'POST'}) }}
+
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        <p>{{ comment.user }}</p>
+        <p>{{ comment.comment }}</p>
+        <hr>
+    {% endfor %}
 {% endblock %}

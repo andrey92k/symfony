@@ -18,6 +18,13 @@ class UpdateAction
 
     public function handle($id, array $data): void
     {
-        $this->categoryRepository->update($id, $data);
+        $items = [
+            'name'        => $data['name'],
+            'description' => $data['description'],
+            'slug'        => $data['slug'],
+            'sort'        => $data['sort'],
+        ];
+
+        $this->categoryRepository->update($id, $items);
     }
 }

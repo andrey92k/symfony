@@ -8,108 +8,106 @@ kernel:
 app_logout:
     path: /logout
     methods: GET
+
 user_list:
     path: /users
-    # the controller value has the format 'controller_class::method_name'
-    controller: App\Controller\Users\AllController
+    controller: App\Controller\UserController::index
+
 user_show:
     path: /users/{id}
-    controller: App\Controller\Users\ShowController
+    controller: App\Controller\UserController::show
     methods:    GET
 
 user_delete:
     path: /users/{id}
-    controller: App\Controller\Users\DeleteController
+    controller: App\Controller\UserController::delete
     methods:   DELETE|POST
 
 categories_list:
     path: /categories
-    # the controller value has the format 'controller_class::method_name'
-    controller: App\Controller\Categories\AllController
+    controller: App\Controller\CategoryController::index
 
 categories_show:
     path: /categories/{id}
-    controller: App\Controller\Categories\ShowController
+    controller: App\Controller\CategoryController::show
     methods:    GET
 
 categories_create_form:
     path: /categories_create
-    controller: App\Controller\Categories\CreateController
+    controller: App\Controller\CategoryController::create
     methods:    GET
 
 categories_create:
     path: /store_categories
-    controller: App\Controller\Categories\StoreController
+    controller: App\Controller\CategoryController::store
     methods:    POST
 
 categories_update:
     path: /update_categories/{id}
-    controller: App\Controller\Categories\UpdateController
+    controller: App\Controller\CategoryController::update
     methods:    PUT|POST
 
 categories_delete:
     path: /categories/{id}
-    controller: App\Controller\Categories\DeleteController
+    controller: App\Controller\CategoryController::delete
     methods:    DELETE|POST
 
 movie_list:
     path: /movies
-    # the controller value has the format 'controller_class::method_name'
-    controller: App\Controller\Movies\AllController
+    controller: App\Controller\MovieController::index
 
 movie_show:
     path: /movies/{id}
-    controller: App\Controller\Movies\ShowController
+    controller: App\Controller\MovieController::show
     methods:    GET
 
 movie_create_form:
     path: /movies_create
-    controller: App\Controller\Movies\CreateController
+    controller: App\Controller\MovieController::create
     methods:    GET
 
 movie_create:
     path: /store_movies
-    controller: App\Controller\Movies\StoreController
+    controller: App\Controller\MovieController::store
     methods:    POST
 
 movie_update:
     path: /update_movies/{id}
-    controller: App\Controller\Movies\UpdateController
+    controller: App\Controller\MovieController::update
     methods:    PUT|POST
 
 movie_delete:
     path: /movies/{id}
-    controller: App\Controller\Movies\DeleteController
+    controller: App\Controller\MovieController::delete
     methods:    DELETE|POST
 
 actor_list:
     path: /actors
-    # the controller value has the format 'controller_class::method_name'
-    controller: App\Controller\Actors\AllController
+    controller: App\Controller\ActorController::index
 
 actor_show:
     path: /actors/{id}
-    controller: App\Controller\Actors\ShowController
+    controller: App\Controller\ActorController::show
     methods:    GET
 
 actor_create_form:
     path: /actors_create
-    controller: App\Controller\Actors\CreateController
+    controller: App\Controller\ActorController::create
     methods:    GET
 
 actor_create:
     path: /store_actors
-    controller: App\Controller\Actors\StoreController
+    controller: App\Controller\ActorController::store
     methods:    POST
 
 actor_update:
     path: /update_actors/{id}
-    controller: App\Controller\Actors\UpdateController
+    controller: App\Controller\ActorController::update
     methods:    PUT|POST
 
 actor_delete:
     path: /actors/{id}
-    controller: App\Controller\Actors\DeleteController
+    controller: App\Controller\ActorController::delete
     methods:    DELETE|POST
 
 redis_test:

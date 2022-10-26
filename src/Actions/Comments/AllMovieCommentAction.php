@@ -17,10 +17,10 @@ class AllMovieCommentAction
     {
     }
 
-    public function handle($id): array
+    public function handle($id)
     {
         $key = $this->redisHelper->parseKey($id,  Movie::TYPE);
-        $items =  json_decode($this->redisHelper->get($key), true);
+        $items = json_decode($this->redisHelper->get($key), true);
 
         return $items;
     }

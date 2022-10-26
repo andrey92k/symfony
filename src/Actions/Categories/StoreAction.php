@@ -18,6 +18,13 @@ class StoreAction
 
     public function handle(array $data): void
     {
-        $this->categoryRepository->store($data);
+        $items = [
+            'name'        => $data['name'],
+            'description' => $data['description'],
+            'slug'        => $data['slug'],
+            'sort'        => $data['sort'],
+        ];
+
+        $this->categoryRepository->store($items);
     }
 }

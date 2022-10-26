@@ -18,6 +18,14 @@ class StoreAction
 
     public function handle(array $data): void
     {
-        $this->actorRepository->store($data);
+        $items = [
+            'fullName'    => $data['fullName'],
+            'description' => $data['description'],
+            'slug'        => $data['slug'],
+            'birthday'    => new \DateTime(implode('-', $data['birthday'])),
+            'birthplace'  => $data['birthplace'],
+        ];
+
+        $this->actorRepository->store($items);
     }
 }

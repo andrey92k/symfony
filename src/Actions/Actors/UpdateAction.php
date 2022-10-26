@@ -18,6 +18,14 @@ class UpdateAction
 
     public function handle($id, array $data): void
     {
-        $this->actorRepository->update($id, $data);
+        $items = [
+            'fullName'    => $data['fullName'],
+            'description' => $data['description'],
+            'slug'        => $data['slug'],
+            'birthday'    => new \DateTime(implode('-', $data['birthday'])),
+            'birthplace'  => $data['birthplace'],
+        ];
+
+        $this->actorRepository->update($id, $items);
     }
 }

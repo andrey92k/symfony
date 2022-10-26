@@ -15,8 +15,8 @@ class RedisHelper
 
     public function __construct()
     {
-        $this->host = '127.0.0.1';
-        $this->port = '6379';
+        $this->host = $_ENV['REDIS_HOST'];
+        $this->port = $_ENV['REDIS_PORT'];
     }
 
     /**

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Search movies</h1>
+
+    {{ form(form, {'action': path('search_by_title'), 'method': 'GET'}) }}
+
+    {% if movies is defined %}
+        <p>Total pages: {{ pages }}</p>
+
+        {% for movie in movies %}
+            <img src="{{ movie.Poster }}" alt="">
+            <p>Title: {{ movie.Title }}</p>
+            <p>Year: {{ movie.Year }}</p>
+            <p>Imdb ID: {{ movie.imdbID }}</p>
+            <p>Type: {{ movie.Type }}</p>
+            <p><a href="{{ path('show_by_imdb_id', {'imdb_id':movie.imdbID}) }}">Details</a></p>
+            <hr>
+        {% endfor %}
+        <p><a href="{{ path('search_by_title', {name: data.name, page: data.page + 1}) }}">Next page</a></p>
+    {% endif %}
+{% endblock %}

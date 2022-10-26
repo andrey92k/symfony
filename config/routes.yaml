@@ -120,3 +120,18 @@ comment_create:
     path: /comment-create/{id}
     controller: App\Controller\CommentController::store
     methods:    POST
+
+search_movies:
+    path: /search-movies
+    controller: App\Controller\ApiSearchMoviesController::index
+    methods: GET
+
+search_by_title:
+    path: /search-by-title
+    controller: App\Controller\ApiSearchMoviesController::searchByTitle
+    methods: GET
+
+show_by_imdb_id:
+    path: /show-by-imdb/{imdb_id}
+    controller: App\Controller\ApiSearchMoviesController::showByImdbId
+    methods: GET

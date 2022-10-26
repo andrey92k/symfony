@@ -1,7 +1,8 @@
 ## Description
-This project is a movie browser, using data from the Movie DB OMDb API
+This project is a movie browser, using data from the Movie DB OMDb API, also the ability to work with CRUD movies.
 
 The application includes the following features: 
+- Search and detail view movies, using OMDb API
 - List movies (CRUD) 
 - List actors (CRUD) 
 - Categories (CRUD) for movies 

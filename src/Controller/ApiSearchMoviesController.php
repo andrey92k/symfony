@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\AbstractFactory\GuiFactory;
 use App\Form\MovieSearchFormType;
 use App\Service\OmdbService;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,8 @@ class ApiSearchMoviesController extends AbstractController
     const LIMIT = 10;
 
     public function __construct(
-        protected OmdbService $service
+        protected OmdbService $service,
+        protected GuiFactory  $factory
     )
     {
     }
@@ -54,9 +56,13 @@ class ApiSearchMoviesController extends AbstractController
     public function showByImdbId($imdb_id)
     {
         $movie = $this->service->showByImdbId($imdb_id);
+        $label = $this->factory->getFactory($movie['Type'])->createLabel()->get();
+        $icon = $this->factory->getFactory($movie['Type'])->createIcon()->get();
 
         return $this->renderForm('api_search_movies/show.html.twig', [
             'movie' => $movie,
+            'label' => $label,
+            'icon'  => $icon
         ]);
     }
 

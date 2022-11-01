@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\AbstractFactory\GuiFactory;
 use App\Form\MovieSearchFormType;
 use App\Service\OmdbService;
+use App\Service\ThemoviedbService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -15,11 +16,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class ApiSearchMoviesController extends AbstractController
 {
-    const LIMIT = 10;
+    const LIMIT_OMDB = 10;
+    const LIMIT_THEMOVIEDB = 20;
+
 
     public function __construct(
-        protected OmdbService $service,
-        protected GuiFactory  $factory
+        protected OmdbService       $omdbService,
+        protected ThemoviedbService $themoviedbService,
+        protected GuiFactory        $factory
     )
     {
     }
@@ -36,15 +40,28 @@ class ApiSearchMoviesController extends AbstractController
     public function searchByTitle(Request $request)
     {
         $data = $request->query->all()['movie_search_form'] ?? $request->query->all();
-        $movies = $this->service->searchByTitle($data);
+
+        switch ($data['select_api']) {
+            case 'omdb':
+
+                return $this->getOmdbData($data);
+            case 'themoviedb':
+                return $this->getThemoviedbData($data);
+        }
+    }
+
+    public function getOmdbData($data)
+    {
+        $movies = $this->omdbService->searchByTitle($data);
         $form = $this->getMovieSearchForm();
+
         if ($movies['Response'] == 'True') {
 
             return $this->renderForm('api_search_movies/index.html.twig', [
-                'form'   => $form,
-                'movies' => $movies['Search'],
-                'pages'  => ceil($movies['totalResults'] / self::LIMIT),
-                'data'   => $data
+                'form'       => $form,
+                'movies_omdb' => $movies['Search'],
+                'pages'      => ceil($movies['totalResults'] / self::LIMIT_OMDB),
+                'data'       => $data
             ]);
         }
 
@@ -53,9 +70,29 @@ class ApiSearchMoviesController extends AbstractController
         ]);
     }
 
-    public function showByImdbId($imdb_id)
+    public function getThemoviedbData($data)
     {
-        $movie = $this->service->showByImdbId($imdb_id);
+        $movies = $this->themoviedbService->searchByTitle($data);
+        $form = $this->getMovieSearchForm();
+
+        if ($movies['total_results'] > 0) {
+
+            return $this->renderForm('api_search_movies/index.html.twig', [
+                'form'              => $form,
+                'movies_themoviedb' => $movies['results'],
+                'pages'             => $movies['total_pages'],
+                'data'              => $data
+            ]);
+        }
+
+        return $this->renderForm('api_search_movies/index.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    public function showByImbdId($imdb_id)
+    {
+        $movie = $this->omdbService->showById($imdb_id);
         $label = $this->factory->getFactory($movie['Type'])->createLabel()->get();
         $icon = $this->factory->getFactory($movie['Type'])->createIcon()->get();
 
@@ -63,6 +100,15 @@ class ApiSearchMoviesController extends AbstractController
             'movie' => $movie,
             'label' => $label,
             'icon'  => $icon
+        ]);
+    }
+
+    public function showByThemoviedbId($id)
+    {
+        $movie = $this->themoviedbService->showById($id);
+
+        return $this->renderForm('api_search_movies/show_themoviedb_api.html.twig', [
+            'movie' => $movie,
         ]);
     }
 

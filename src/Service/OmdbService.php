@@ -10,8 +10,9 @@ class OmdbService
     public function searchByTitle(array $data): array
     {
         $queryParams = [
-            's'    => $data['name'],
-            'page' => $data['page'],
+            's'      => $data['name'],
+            'page'   => $data['page'],
+            'apikey' => $this->secret
         ];
 
         $response = $this->performRequestQuery($queryParams);
@@ -19,10 +20,11 @@ class OmdbService
         return $response->toArray();
     }
 
-    public function showByImdbId(string $imdb_id): array
+    public function showById(string $imdb_id): array
     {
         $queryParams = [
-            'i' => $imdb_id
+            'i' => $imdb_id,
+            'apikey' => $this->secret
         ];
 
         $response = $this->performRequestQuery($queryParams);

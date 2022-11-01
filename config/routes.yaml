@@ -131,5 +131,10 @@ search_by_title:
 
 show_by_imdb_id:
     path: /show-by-imdb/{imdb_id}
-    controller: App\Controller\ApiSearchMoviesController::showByImdbId
+    controller: App\Controller\ApiSearchMoviesController::showByImbdId
+    methods: GET
+
+show_by_themoviedb_id:
+    path: /show-by-themoviedb/{id}
+    controller: App\Controller\ApiSearchMoviesController::showByThemoviedbId
     methods: GET

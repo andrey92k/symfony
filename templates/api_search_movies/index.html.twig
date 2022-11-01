@@ -4,10 +4,11 @@
 
     {{ form(form, {'action': path('search_by_title'), 'method': 'GET'}) }}
 
-    {% if movies is defined %}
+    {% if movies_omdb is defined %}
         <p>Total pages: {{ pages }}</p>
 
-        {% for movie in movies %}
+        {% for movie in movies_omdb %}
+
             <img src="{{ movie.Poster }}" alt="">
             <p>Title: {{ movie.Title }}</p>
             <p>Year: {{ movie.Year }}</p>
@@ -15,7 +16,23 @@
             <p>Type: {{ movie.Type }}</p>
             <p><a href="{{ path('show_by_imdb_id', {'imdb_id':movie.imdbID}) }}">Details</a></p>
             <hr>
+
         {% endfor %}
-        <p><a href="{{ path('search_by_title', {name: data.name, page: data.page + 1}) }}">Next page</a></p>
+        <p><a href="{{ path('search_by_title', {name: data.name, select_api: data.select_api, page: data.page + 1}) }}">Next page</a></p>
+    {% endif %}
+
+    {% if movies_themoviedb is defined %}
+        <p>Total pages: {{ pages }}</p>
+
+        {% for movie in movies_themoviedb %}
+
+            <img src="{{ movie.poster_path }}" alt="">
+            <p>Title: {{ movie.title }}</p>
+            <p>Year: {{ movie.release_date }}</p>
+            <p><a href="{{ path('show_by_themoviedb_id', {'id':movie.id}) }}">Details</a></p>
+            <hr>
+
+        {% endfor %}
+        <p><a href="{{ path('search_by_title', {name: data.name, select_api: data.select_api, page: data.page + 1}) }}">Next page</a></p>
     {% endif %}
 {% endblock %}

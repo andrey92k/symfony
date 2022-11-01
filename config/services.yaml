@@ -42,3 +42,11 @@ services:
             # which define the prefix to use for the keys to avoid collision on the Redis server
             # and the expiration time for any given entry (in seconds), defaults are 'sf_s' and null:
             # - { 'prefix': 'my_prefix', 'ttl': 600 }
+    App\Service\OmdbService:
+        arguments:
+             $baseUri: '%env(OMDBAPI_URI)%'
+             $secret: '%env(OMDBAPI_SECRET)%'
+    App\Service\ThemoviedbService:
+        arguments:
+            $baseUri: '%env(THEMOVIEDBAPI_URI)%'
+            $secret: '%env(THEMOVIEDBAPI_SECRET)%'

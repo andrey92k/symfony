@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>Detail movie</h1>
+    <img src="{{ movie.poster_path }}" alt="">
+            <p>Title: {{ movie.original_title }}</p>
+            <p>Year: {{ movie.release_date }}</p>
+            <p>Imdb ID: {{ movie.imdb_id }}</p>
+            <p>Runtime: {{ movie.runtime }}</p>
+    <hr>
+
+{% endblock %}

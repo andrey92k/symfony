@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Feature;
 
 use App\Actions\Movies\DeleteAction;
 use App\Actions\Movies\StoreAction;
 use App\Actions\Movies\UpdateAction;
+use App\Repository\MovieRepository;
 use App\Tests\Fixture\ActorFixtures;
 use App\Tests\Fixture\CategoryFixtures;
-use App\Tests\Traits\Main;
 use App\Tests\Fixture\MovieFixtures;
-use App\Repository\MovieRepository;
+use App\Tests\Traits\Main;
 use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
 use Liip\TestFixturesBundle\Services\DatabaseTools\AbstractDatabaseTool;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;

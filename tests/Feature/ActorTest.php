@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Feature;
 
 use App\Actions\Actors\DeleteAction;
 use App\Actions\Actors\StoreAction;
 use App\Actions\Actors\UpdateAction;
-use App\Tests\Traits\Main;
-use App\Tests\Fixture\ActorFixtures;
 use App\Repository\ActorRepository;
+use App\Tests\Fixture\ActorFixtures;
+use App\Tests\Traits\Main;
 use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
 use Liip\TestFixturesBundle\Services\DatabaseTools\AbstractDatabaseTool;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;

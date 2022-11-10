@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Feature;
 
 use App\Actions\Users\DeleteAction;
-use App\Tests\Fixture\UserFixtures;
 use App\Repository\UserRepository;
+use App\Tests\Fixture\UserFixtures;
 use App\Tests\Traits\Main;
 use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
 use Liip\TestFixturesBundle\Services\DatabaseTools\AbstractDatabaseTool;

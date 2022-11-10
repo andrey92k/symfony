@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\Feature;
 
 use App\Actions\Categories\DeleteAction;
 use App\Actions\Categories\StoreAction;
 use App\Actions\Categories\UpdateAction;
-use App\Entity\Category;
-use App\Tests\Traits\Main;
-use App\Tests\Fixture\CategoryFixtures;
 use App\Repository\CategoryRepository;
+use App\Tests\Fixture\CategoryFixtures;
+use App\Tests\Traits\Main;
 use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
 use Liip\TestFixturesBundle\Services\DatabaseTools\AbstractDatabaseTool;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;

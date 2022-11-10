@@ -18,7 +18,7 @@ class StoreAction
     {
     }
 
-    public function handle(array $data, $user): void
+    public function handle(array $data, $user, $ttl = null): void
     {
         $comments[] = [
             'comment' => $data['comment'],
@@ -31,6 +31,6 @@ class StoreAction
             $comments = array_merge($items, $comments);
         }
 
-        $this->redisHelper->set($key, json_encode($comments));
+        $this->redisHelper->set($key, json_encode($comments), $ttl);
     }
 }

@@ -34,7 +34,7 @@ class Actor
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[ORM\ManyToMany(targetEntity: Movie::class, mappedBy: 'actor')]
+    #[ORM\ManyToMany(targetEntity: Movie::class, mappedBy: 'actors')]
     private Collection $movies;
 
     public function __construct()

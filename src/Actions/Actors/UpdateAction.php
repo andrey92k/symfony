@@ -18,11 +18,15 @@ class UpdateAction
 
     public function handle($id, array $data): void
     {
+        if (is_array($data['birthday'])) {
+            $data['birthday'] = implode('-', $data['birthday']);
+        }
+
         $items = [
             'fullName'    => $data['fullName'],
             'description' => $data['description'],
             'slug'        => $data['slug'],
-            'birthday'    => new \DateTime(implode('-', $data['birthday'])),
+            'birthday'    => new \DateTime($data['birthday']),
             'birthplace'  => $data['birthplace'],
         ];
 

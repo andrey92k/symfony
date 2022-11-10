@@ -28,7 +28,7 @@ class Category
     #[ORM\Column(nullable: true)]
     private ?int $sort = null;
 
-    #[ORM\ManyToMany(targetEntity: Movie::class, mappedBy: 'category')]
+    #[ORM\ManyToMany(targetEntity: Movie::class, mappedBy: 'categories')]
     private Collection $movies;
 
     public function __construct()

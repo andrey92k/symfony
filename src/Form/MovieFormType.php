@@ -25,12 +25,12 @@ class MovieFormType extends AbstractType
             ->add('data_release', DateType::class, [
                 'input' => 'datetime',
             ])
-            ->add('category', EntityType::class, [
+            ->add('categories', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
                 'multiple' => true
             ])
-            ->add('actor', EntityType::class, [
+            ->add('actors', EntityType::class, [
                 'class' => Actor::class,
                 'choice_label' => 'fullName',
                 'multiple' => true

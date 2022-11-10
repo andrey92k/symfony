@@ -51,12 +51,12 @@ class MovieRepository extends ServiceEntityRepository
             ->setFrame($data['frame'])
             ->setDataRelease($data['data_release']);
 
-        foreach ($data['category'] as $item) {
+        foreach ($data['categories'] as $item) {
             $category = $this->getEntityManager()->getRepository(Category::class)->find($item);
             $this->entity->addCategory($category);
         }
 
-        foreach ($data['actor'] as $item) {
+        foreach ($data['actors'] as $item) {
             $actor = $this->getEntityManager()->getRepository(Actor::class)->find($item);
             $this->entity->addActor($actor);
         }
@@ -78,12 +78,12 @@ class MovieRepository extends ServiceEntityRepository
         $entity->removeAllCategories();
         $entity->removeAllActors();
 
-        foreach ($data['category'] as $item) {
+        foreach ($data['categories'] as $item) {
             $category = $this->getEntityManager()->getRepository(Category::class)->find($item);
             $entity->addCategory($category);
         }
 
-        foreach ($data['actor'] as $item) {
+        foreach ($data['actors'] as $item) {
             $category = $this->getEntityManager()->getRepository(Actor::class)->find($item);
             $entity->addActor($category);
         }

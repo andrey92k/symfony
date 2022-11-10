@@ -40,16 +40,16 @@ class Movie
     private Collection $comments;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'movies')]
-    private Collection $category;
+    private Collection $categories;
 
     #[ORM\ManyToMany(targetEntity: Actor::class, inversedBy: 'movies')]
-    private Collection $actor;
+    private Collection $actors;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
-        $this->category = new ArrayCollection();
-        $this->actor = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->actors = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -162,15 +162,15 @@ class Movie
     /**
      * @return Collection<int, Category>
      */
-    public function getCategory(): Collection
+    public function getCategories(): Collection
     {
-        return $this->category;
+        return $this->categories;
     }
 
     public function addCategory(Category $category): self
     {
-        if (!$this->category->contains($category)) {
-            $this->category->add($category);
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
         }
 
         return $this;
@@ -178,21 +178,21 @@ class Movie
 
     public function removeCategory(Category $category): self
     {
-        $this->category->removeElement($category);
+        $this->categories->removeElement($category);
 
         return $this;
     }
 
     public function removeAllCategories(): self
     {
-        $this->category->clear();
+        $this->categories->clear();
 
         return $this;
     }
 
     public function removeAllActors(): self
     {
-        $this->actor->clear();
+        $this->actors->clear();
 
         return $this;
     }
@@ -200,15 +200,15 @@ class Movie
     /**
      * @return Collection<int, Actor>
      */
-    public function getActor(): Collection
+    public function getActors(): Collection
     {
-        return $this->actor;
+        return $this->actors;
     }
 
     public function addActor(Actor $actor): self
     {
-        if (!$this->actor->contains($actor)) {
-            $this->actor->add($actor);
+        if (!$this->actors->contains($actor)) {
+            $this->actors->add($actor);
         }
 
         return $this;
@@ -216,7 +216,7 @@ class Movie
 
     public function removeActor(Actor $actor): self
     {
-        $this->actor->removeElement($actor);
+        $this->actors->removeElement($actor);
 
         return $this;
     }

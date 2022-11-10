@@ -14,12 +14,14 @@ The application includes the following features:
 - Mysql 8 
 - PHP 8.1 
 - Redis
+- Unit Testing
 
 ## Goal
 Skill Up:
 - Libraries and Frameworks
 - Object-Oriented Design
 - Databases (Design and Development)
+- Unit Testing
 
 ## Project initial setup
 ```
